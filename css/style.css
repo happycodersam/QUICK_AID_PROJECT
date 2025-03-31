@@ -1,0 +1,177 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("https://in.images.search.yahoo.com/search/images;_ylt=AwrKEZef_txntVU7yRa9HAx.;_ylu=c2VjA3NlYXJjaARzbGsDYXNzaXN0;_ylc=X1MDMjExNDcyMzAwNQRfcgMyBGZyA21jYWZlZQRmcjIDc2EtZ3Atc2VhcmNoBGdwcmlkAzFmcy5TVGtiU0pXTHV3TkhBWlR3VEEEbl9yc2x0AzAEbl9zdWdnAzkEb3JpZ2luA2luLmltYWdlcy5zZWFyY2gueWFob28uY29tBHBvcwMyBHBxc3RyA0dpdmUgbG9nbyBmb3IgbmFtZSBxdWljayBhaWQgYXBwIGFta2UgaXQgYXN0aGV0aWMEcHFzdHJsAzQ5BHFzdHJsAzU1BHF1ZXJ5A2dpdmUlMjBsb2dvJTIwZm9yJTIwbmFtZSUyMHF1aWNrJTIwYWlkJTIwYXBwJTIwYW1rZSUyMGl0JTIwYWVzdGhldGljJTIwZnJlZQR0X3N0bXADMTc0MjUzNjM3NAR1c2VfY2FzZQM-?p=give+logo+for+name+quick+aid+app+amke+it+aesthetic+free&fr=mcafee&fr2=sa-gp-search&ei=UTF-8&x=wrt&type=E210IN885G0#id=0&iurl=https%3A%2F%2Fplay-lh.googleusercontent.com%2FSLfKTYVm-AT-OiOAOfQFJ8zk42d9tAqRa9Uhil_f603pCqtdVSyrw4CdfgYkitboHM0O&action=click");
+  }
+  
+  header {
+    background: #145967;
+    color: #f5eeef;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    box-align: left;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin: 0 1rem;
+  }
+  
+  nav ul li a {
+    color: #f2ecec;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover,
+  nav ul li a.active {
+    color: #ffdd57;
+  }
+  
+  main {
+    padding: 2rem;
+  }
+  
+  .content {
+    background: #f9f1f1;
+    padding: 2rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .result {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #cacfd0;
+    border-left: 5px solid #005f73;
+    border-radius: 4px;
+  }
+  
+  /* Footer */
+  footer {
+    background: #713e3e;
+    background:transparent;
+    color: #000000;
+    text-align: center;
+    padding: 5rem;
+    margin-top:250px;
+    
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Button styling */
+  button {
+    background: #005f73;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #0a9396;
+  }
+
+  /* Medical Chatbot Logo CSS */
+
+.logo-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: #ea140d; /* Bright red background */
+    border-radius: 50%; /* Create a perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .medical-bag {
+    position: relative;
+    width: 45px;
+    height: 35px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .medical-bag::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 20px;
+    height: 10px;
+    background-color: white;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .cross {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background-color: #e61f19; /* Red cross */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cross::before, .cross::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+  }
+  
+  .cross::before {
+    width: 15px;
+    height: 3px;
+  }
+  
+  .cross::after {
+    width: 3px;
+    height: 15px;
+  }
+  
+  /* HTML implementation example */
+  /*
+  <div class="logo-container">
+    <div class="medical-bag">
+      <div class="cross"></div>
+    </div>
+  </div>
+  */
+p,h2{
+  color:#000000
+  
+
+}

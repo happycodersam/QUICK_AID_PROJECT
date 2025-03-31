@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quick Aid - Physiotherapy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://wallpaperaccess.com/full/5297301.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 12px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffc107;
+      margin-bottom: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      padding: 5px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: 0.3s;
+      border-radius: 5px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: #ffc107;
+      color: black;
+    }
+
+    /* Main Content */
+    .center-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .remedies-box {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .remedies-box h2 {
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+      color: #ffc107;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .checkbox-group label {
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checkbox-group input {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ffc107;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .checkbox-group input:checked {
+      background-color: #ffc107;
+    }
+
+    .checkbox-group input:checked::before {
+      content: '✔';
+      font-size: 16px;
+      color: black;
+      position: absolute;
+      top: 1px;
+      left: 3px;
+    }
+
+    .btn {
+      background: #ffc107;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      background: #ffdb58;
+      transform: scale(1.05);
+    }
+
+    /* Remedies Display */
+    .remedies-result {
+      margin-top: 15px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-left: 5px solid #ffc107;
+      border-radius: 8px;
+      text-align: left;
+      animation: fadeIn 1s ease-in-out;
+      display: none;
+    }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .loading span {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .nav-links a {
+        font-size: 1rem;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">Quick Aid</div>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('home_remedies') }}">Home Remedies</a>
+      <a href="{{ url_for('physiotherapy') }}" class="active">Physiotherapy</a>
+      <a href="{{ url_for('providing_nurse') }}">Providing Nurse</a>
+      <a href="{{ url_for('nearest_doctor') }}">Nearest Dr</a>
+      <a href="{{ url_for('online_appointment') }}">Online Appointment</a>
+    </div>
+  </div>
+
+  <div class="center-box">
+    <div class="remedies-box">
+      <h2><i class="fas fa-heartbeat"></i> Home Remedies</h2>
+      <p>Select your symptoms to get remedies and precautions.</p>
+
+      <div class="checkbox-group">
+        <label><input type="checkbox" value="cough"> Cough</label>
+        <label><input type="checkbox" value="fever"> Fever</label>
+        <label><input type="checkbox" value="headache"> Headache</label>
+        <label><input type="checkbox" value="stomachache"> Stomachache</label>
+      </div>
+
+      <button class="btn" onclick="getRemedies()"><i class="fas fa-search"></i> Get Remedies</button>
+      <div id="remedyResult" class="remedies-result"></div>
+    </div>
+  </div>
+
+  <script>
+    function getRemedies() {
+      let resultDiv = document.getElementById("remedyResult");
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = `
+        <div class="loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <span>Fetching remedies...</span>
+        </div>
+      `;
+
+      setTimeout(() => {
+        let selectedSymptoms = [];
+        document.querySelectorAll(".checkbox-group input:checked").forEach((checkbox) => {
+          selectedSymptoms.push(checkbox.value);
+        });
+
+        if (selectedSymptoms.length === 0) {
+          resultDiv.innerHTML = "<b>⚠️ Please select at least one symptom.</b>";
+          return;
+        }
+
+        let remedies = {
+          cough: "🔹 Drink warm water with honey and lemon.\n🔹 Use steam inhalation for relief.",
+          fever: "🔹 Stay hydrated and rest well.\n🔹 Drink herbal tea like ginger or tulsi tea.",
+          headache: "🔹 Apply a cold compress on your forehead.\n🔹 Drink plenty of water and avoid screen time.",
+          stomachache: "🔹 Have light meals and drink peppermint tea.\n🔹 Avoid spicy and oily foods."
+        };
+
+        let output = selectedSymptoms.map(symptom => `<b>${symptom.toUpperCase()}:</b> ${remedies[symptom]}`).join("<br><br>");
+        resultDiv.innerHTML = output;
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>

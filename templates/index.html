@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quick Aid - Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    /* Global Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Background Styling */
+    body {
+      background: url("https://static.vecteezy.com/system/resources/previews/006/712/985/non_2x/abstract-health-medical-science-healthcare-icon-digital-technology-science-concept-modern-innovation-treatment-medicine-on-hi-tech-future-blue-background-for-wallpaper-template-web-design-vector.jpg") 
+      no-repeat center center/cover;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #f39c12;
+    }
+
+    /* Main Section */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    section h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    section p {
+      font-size: 18px;
+      max-width: 600px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo">Quick Aid</h1>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home_remedies') }}">Home Remedies</a></li>
+        <li><a href="{{ url_for('physiotherapy') }}">Physiotherapy</a></li>
+        <li><a href="{{ url_for('providing_nurse') }}">Providing Nurse</a></li>
+        <li><a href="{{ url_for('nearest_doctor') }}">Nearest Dr</a></li>
+        <li><a href="{{ url_for('online_appointment') }}">Online Appointment</a></li>
+        {% if session.get('user_id') %}
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section>
+      <h2>Welcome to Quick Aid</h2>
+      <p>Your one-stop solution for quick health support, remedies, therapy, and appointments.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Quick Aid. All Rights Reserved.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
